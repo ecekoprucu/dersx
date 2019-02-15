@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fail/Pass</title>
+</head>
+<body>
+	<h1 id='passedlist'></h1>
+</body>
+<script>
+	
+	class Student {
+		constructor(name, score1, score2){
+			this.name= name;
+			this.score1= score1;
+			this.score2= score2;
+		}
+			
+		calculateScore (name, x, y){
+			let score = x + y;
+			let passed;
+			let degree;
+			if (score >= 91) {
+				passed = true;
+				degree = "A";
+			} else if (90 >= score && score >= 81) {
+				passed = true;
+				degree = "B";
+			} else if (80 >= score && score >= 71) {
+				passed = true;
+				degree = "C";
+			} else if (70 >= score && score >= 61) {
+				 passed = false;
+				 degree = "D";
+			} else {
+				passed = false;
+				degree = "E";
+			}
+
+			if (passed === true){
+				return name + " passed with: " + degree;
+			} else {
+				return name + " failed with: " + degree;
+			}
+		}
+	}
+	let s1 = new Student("John", 47, 46);
+	let s2 = new Student("Bob", 23, 24);
+	let s3 = new Student("Nick", 40, 35);
+	let s4 = new Student("Alex", 44, 45);
+
+	let Students = [
+		s1,
+		s2,
+		s3,
+		s4
+	]
+
+	for(var key in Students) {
+		document.getElementById("passedlist").innerHTML+= Students[key].calculateScore(Students[key].name, Students[key].score1,Students[key].score2) + " ";
+	}
+</script>
+</html>
